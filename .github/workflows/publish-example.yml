@@ -17,20 +17,9 @@ jobs:
           node-version: "16"
       - run: yarn install --immutable --immutable-cache --check-cache
       - run: yarn build
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - working-directory: ./examples/demo
-        run: cargo run --release --all-features
+      - run: cp dist/hljs-smithy.min.js examples/demo/hljs-smithy.min.js
       - name: Deploy example
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./examples/demo/dist
+          folder: ./examples/demo
           single-commit: true
