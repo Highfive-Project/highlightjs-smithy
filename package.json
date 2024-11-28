@@ -1,6 +1,6 @@
 {
   "name": "highlightjs-smithy",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "main": "src/smithy.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "author": "jasmaa",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "highlight.js": "^11.5.1",
     "jest": "^28.1.1",
