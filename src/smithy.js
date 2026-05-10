@@ -9,50 +9,41 @@ module.exports = function (hljs) {
   const MULTILINE_STRING = {
     begin: '"""',
     end: '"""',
-    scope: 'string',
-    contains: [hljs.BACKSLASH_ESCAPE]
+    scope: "string",
+    contains: [hljs.BACKSLASH_ESCAPE],
   };
 
   const IDENTIFIER_RE = /[\w-]+([\.\#][\w-]+)*/;
 
   const ATTRIBUTE = {
-    match: [
-      IDENTIFIER_RE,
-      /:/,
-    ],
+    match: [IDENTIFIER_RE, /:/],
     scope: {
-      1: 'attr',
+      1: "attr",
     },
   };
 
   const ELISION_ATTRIBUTE = {
-    match: [
-      /\$/,
-      IDENTIFIER_RE,
-    ],
+    match: [/\$/, IDENTIFIER_RE],
     scope: {
-      1: 'keyword',
-      2: 'attr',
+      1: "keyword",
+      2: "attr",
     },
   };
 
   const IDENTIFIER = {
     match: IDENTIFIER_RE,
-    scope: 'title',
+    scope: "title",
   };
 
   const LITERAL = {
     match: /true|false|null/,
-    scope: 'literal'
+    scope: "literal",
   };
 
   const TRAIT = {
-    match: [
-      /@/,
-      /\w+/,
-    ],
+    match: [/@/, /\w+/],
     scope: {
-      2: 'meta',
+      2: "meta",
     },
   };
 
@@ -71,53 +62,34 @@ module.exports = function (hljs) {
   const ARRAY_NODE = {
     begin: /\[/,
     end: /\]/,
-    contains: [
-      ...NODE_CONTENTS,
-      'self',
-    ],
+    contains: [...NODE_CONTENTS, "self"],
   };
 
   const OBJECT_NODE = {
     begin: /{/,
     end: /}/,
-    contains: [
-      ...NODE_CONTENTS,
-      'self',
-    ],
+    contains: [...NODE_CONTENTS, "self"],
   };
 
   const PARENS_NODE = {
     begin: /\(/,
     end: /\)/,
-    contains: [
-      OBJECT_NODE,
-      ARRAY_NODE,
-      ...NODE_CONTENTS,
-      'self',
-    ]
+    contains: [OBJECT_NODE, ARRAY_NODE, ...NODE_CONTENTS, "self"],
   };
 
   const VERSION = {
-    match: [
-      /\$/,
-      /version/,
-      /:/,
-    ],
+    match: [/\$/, /version/, /:/],
     scope: {
-      1: 'keyword',
-      2: 'attr',
+      1: "keyword",
+      2: "attr",
     },
   };
 
   const NAMESPACE = {
-    match: [
-      /namespace/,
-      /\s+/,
-      IDENTIFIER_RE,
-    ],
+    match: [/namespace/, /\s+/, IDENTIFIER_RE],
     scope: {
-      1: 'keyword',
-      3: 'attr',
+      1: "keyword",
+      3: "attr",
     },
   };
 
@@ -128,8 +100,8 @@ module.exports = function (hljs) {
       IDENTIFIER_RE,
     ],
     scope: {
-      1: 'keyword',
-      3: 'title',
+      1: "keyword",
+      3: "title",
     },
   };
 
@@ -140,52 +112,47 @@ module.exports = function (hljs) {
       IDENTIFIER_RE,
     ],
     scope: {
-      1: 'keyword',
-      3: 'title',
+      1: "keyword",
+      3: "title",
     },
   };
 
   const FOR = {
-    match: [
-      /for/,
-      /\s+/,
-      IDENTIFIER_RE,
-    ],
+    match: [/for/, /\s+/, IDENTIFIER_RE],
     scope: {
-      1: 'keyword',
-      3: 'title',
+      1: "keyword",
+      3: "title",
     },
   };
 
   const WITH = {
     match: /with/,
-    scope: 'keyword',
+    scope: "keyword",
   };
 
   const METADATA = {
     match: /metadata/,
-    scope: 'keyword',
+    scope: "keyword",
   };
 
   return {
-    contains:
-      [
-        VERSION,
-        NAMESPACE,
-        AGGREGATE_SHAPE,
-        SIMPLE_SHAPE,
-        TRAIT,
-        FOR,
-        WITH,
-        METADATA,
-        OBJECT_NODE,
-        ARRAY_NODE,
-        PARENS_NODE,
-        hljs.QUOTE_STRING_MODE,
-        OBJECT_NODE,
-        ARRAY_NODE,
-        hljs.C_LINE_COMMENT_MODE,
-        IDENTIFIER,
-      ]
-  }
-}
+    contains: [
+      VERSION,
+      NAMESPACE,
+      AGGREGATE_SHAPE,
+      SIMPLE_SHAPE,
+      TRAIT,
+      FOR,
+      WITH,
+      METADATA,
+      OBJECT_NODE,
+      ARRAY_NODE,
+      PARENS_NODE,
+      hljs.QUOTE_STRING_MODE,
+      OBJECT_NODE,
+      ARRAY_NODE,
+      hljs.C_LINE_COMMENT_MODE,
+      IDENTIFIER,
+    ],
+  };
+};

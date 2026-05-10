@@ -1,1 +1,1 @@
-global.window.hljsSmithy = require('./smithy.js');
+global.window.hljsSmithy = require("./smithy.js");

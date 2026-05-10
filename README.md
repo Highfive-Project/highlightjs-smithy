@@ -24,11 +24,11 @@ Include in HTML page:
   </code>
 </pre>
 ...
-<link rel="stylesheet" href="path/to/theme.css">
+<link rel="stylesheet" href="path/to/theme.css" />
 <script src="path/to/highlight.min.js"></script>
 <script src="path/to/hljs-smithy.min.js"></script>
 <script>
-  hljs.registerLanguage('smithy', hljsSmithy);
+  hljs.registerLanguage("smithy", hljsSmithy);
   hljs.highlightAll();
 </script>
 ```
@@ -45,8 +45,8 @@ npm install highlightjs-smithy
 Import modules in Node:
 
 ```js
-const hljs = require('highlight.js');
-const hljsSmithy = require('highlightjs-smithy');
+const hljs = require("highlight.js");
+const hljsSmithy = require("highlightjs-smithy");
 
 const code = `
 namespace example.weather
@@ -65,8 +65,8 @@ resource City {
 }
 `;
 
-hljs.registerLanguage('smithy', hljsSmithy);
+hljs.registerLanguage("smithy", hljsSmithy);
 const result = hljs.highlight(code, {
-  language: 'smithy',
+  language: "smithy",
 });
 ```

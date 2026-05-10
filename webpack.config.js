@@ -1,10 +1,10 @@
-const path = require('path');
-const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
-const pkg = require('./package.json');
+const path = require("path");
+const webpack = require("webpack");
+const TerserPlugin = require("terser-webpack-plugin");
+const pkg = require("./package.json");
 
-const commitHash = require('child_process')
-  .execSync('git rev-parse --short HEAD')
+const commitHash = require("child_process")
+  .execSync("git rev-parse --short HEAD")
   .toString()
   .trim();
 
@@ -15,15 +15,13 @@ License: ${pkg.license}
 `;
 
 module.exports = {
-  entry: './src/standalone.js',
+  entry: "./src/standalone.js",
   output: {
-    filename: 'hljs-smithy.min.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "hljs-smithy.min.js",
+    path: path.resolve(__dirname, "dist"),
   },
   optimization: {
     minimizer: [new TerserPlugin({ extractComments: false })],
   },
-  plugins: [
-    new webpack.BannerPlugin({ banner }),
-  ],
+  plugins: [new webpack.BannerPlugin({ banner })],
 };
